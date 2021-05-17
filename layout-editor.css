@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  padding: 2rem;
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+#editor {
+  border: 1px solid #000;
+}
+
+.editor-cell {
+  position: relative;
+  background: lightgray;
+  height: 200px;
+  border: 3px solid darkblue;
+}
+
+.editor-cell button {
+  position: absolute;
+  border-radius: 100%;
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  z-index: 10;
+}
+
+.add-cell {
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+
+.add-row {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, +50%);
+}
