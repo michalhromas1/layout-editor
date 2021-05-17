@@ -1,31 +1,29 @@
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 :root {
   font-size: 62.5%;
-  --editor-cell-spacing: 2rem;
+  --editor-column-spacing: 3.5rem;
 }
 
 body {
   padding: 2rem;
-  margin: 0;
   font-size: 1.6rem;
 }
 
-#editor {
-  border: 1px solid #000;
-}
-
-.editor-cell {
+.editor-column {
   position: relative;
   background: lightgray;
-  min-height: 200px;
   border: 3px solid darkblue;
-  padding: var(--editor-cell-spacing);
+  padding: var(--editor-column-spacing);
+  display: grid;
+  flex: 1;
 }
 
-.editor-cell button {
+.editor-column button {
   position: absolute;
   border-radius: 100%;
   width: 3rem;
@@ -37,10 +35,19 @@ body {
   z-index: 10;
 }
 
-.add-cell {
+.editor-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.editor-column,
+.editor-row {
+  row-gap: var(--editor-column-spacing);
+  column-gap: var(--editor-column-spacing);
+}
+
+.add-column {
   right: 0;
-  top: 50%;
-  transform: translate(50%, -50%);
   top: 0;
   transform: translate(50%, -50%);
 }
@@ -49,18 +56,4 @@ body {
   bottom: 0;
   left: 50%;
   transform: translate(-50%, +50%);
-}
-
-.editor-cell.has-children > .add-cell {
-  top: 0;
-  transform: translate(50%, -50%);
-}
-
-.editor-cell-children {
-  position: relative;
-  height: 100%;
-  display: grid;
-  column-gap: var(--editor-cell-spacing);
-  grid-auto-columns: 1fr;
-  grid-auto-flow: column;
 }
