@@ -21,6 +21,7 @@ function createCellButtons(cell) {
   addRowBtn.innerText = 'R+';
 
   addRowBtn.addEventListener('click', addRow);
+  addCellBtn.addEventListener('click', addCell);
 
   cell.appendChild(addCellBtn);
   cell.appendChild(addRowBtn);
@@ -29,4 +30,20 @@ function createCellButtons(cell) {
 function addRow(e) {
   const cell = e.target.parentElement;
   cell.insertAdjacentElement('afterend', createCell());
+}
+
+function addCell(e) {
+  const cell = e.target.parentElement;
+  let childrenWrapper;
+
+  if ((childrenWrapper = cell.querySelector('.editor-cell-children'))) {
+    childrenWrapper.appendChild(createCell());
+    return;
+  }
+
+  childrenWrapper = document.createElement('div');
+  childrenWrapper.className = 'editor-cell-children';
+  cell.appendChild(childrenWrapper);
+  childrenWrapper.appendChild(createCell());
+  childrenWrapper.appendChild(createCell());
 }
