@@ -33,6 +33,12 @@ body {
   align-items: center;
   background: #fff;
   z-index: 10;
+  display: none;
+  cursor: pointer;
+}
+
+.editor-column.hovered > button {
+  display: block;
 }
 
 .editor-row {
